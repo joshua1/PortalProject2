@@ -1,0 +1,71 @@
+﻿@model PortalProject2.Models.Message
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Message</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        @Html.HiddenFor(model => model.MessageId)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StatusCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StatusCode)
+            @Html.ValidationMessageFor(model => model.StatusCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MessageStatus)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MessageStatus)
+            @Html.ValidationMessageFor(model => model.MessageStatus)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateSent)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateSent)
+            @Html.ValidationMessageFor(model => model.DateSent)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PhoneNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PhoneNumber)
+            @Html.ValidationMessageFor(model => model.PhoneNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MessageText)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MessageText)
+            @Html.ValidationMessageFor(model => model.MessageText)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,50 @@
+﻿@model PortalProject2.Models.Message
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Message</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.StatusCode)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StatusCode)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MessageStatus)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MessageStatus)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DateSent)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateSent)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PhoneNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PhoneNumber)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MessageText)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MessageText)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

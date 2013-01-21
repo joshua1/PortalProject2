@@ -1,0 +1,67 @@
+﻿@model IEnumerable<PortalProject2.Models.Message>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="span9" id="content">
+    <div class="row-fluid">
+        <div class="span12">
+        <div class="box alternate">
+            <div class="box-title">
+                Sent Messages
+            </div>
+            <div class="box-content nopadding">
+<div id="historyGrid">
+</div>
+<script type="text/x-kendo-template" id="template">
+                <div class="tabstrip">
+                    <ul>
+                        <li class="k-state-active">
+                           Phone Numbers
+                        </li>
+                        <li>
+                            Message Information
+                        </li>
+                    </ul>
+                    <div>
+                        <div class="trips"></div>
+                    </div>
+                    <div>
+                        <div class='message-details'>
+                            <ul>
+                                <li><label>Message Status:</label> #= MessageStatus #</li>
+                                <li><label>Date Sent:</label>#= DateSent #</li>
+                                <li><label>Message Id :</label>#= MessageId #</li>
+                                <li><label>Content:</label>#= MessageText #</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </script>
+              </div>                  
+            </div>
+        </div>
+    </div>
+</div>
+<style scoped="scoped">
+    .message-details ul
+    {
+        list-style:none;
+        font-style:italic;
+        margin-bottom: 20px;
+    }
+
+    .message-details label
+    {
+        display:inline-block;
+        width:220px;
+        font-style:normal;
+        font-weight:bold;
+    }
+</style>
+
+<script type="text/javascript">
+ 
+    SentMessages.init();
+</script>

@@ -1,0 +1,45 @@
+﻿@using System.Web.Optimization
+@using BootstrapSupport
+@model PortalProject2.ViewModels.ViewMessage
+
+@{
+    ViewBag.Title = "Create";
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+ 
+<div class="span9" id="content">
+    <div class="row-fluid">
+        <div class="span12">
+        <div class="box alternate">
+            <div class="box-title">
+                New Message
+            </div>
+            <div class="box-content nopadding">
+                @using (Html.BeginForm("Create","Message",FormMethod.Post,new { @class="form-horizontal"}))
+                {
+                    @Html.ValidationSummary(true)
+                    foreach (var property in Model.VisibleProperties())
+                    {
+                        @Html.BeginControlGroupFor(property.Name)
+                        @Html.Label(property.Name.ToSeparatedWords(), new { @class = "control-label" })
+                        <div class="controls">
+                            @Html.Editor(property.Name)
+                            @Html.ValidationMessage(property.Name, null, new { @class = "help-inline" })
+                        </div>
+                        @Html.EndControlGroup()
+                    }
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                                        
+                    </div>
+                }
+                 </div>                  
+            </div>
+        </div>
+    </div>
+</div>
+ 
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

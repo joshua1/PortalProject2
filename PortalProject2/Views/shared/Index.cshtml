@@ -1,0 +1,55 @@
+@model PortalProject2.ViewModels.PushStats
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="span9" id="content">
+<div class="row-fluid">
+    <div class="span12">
+        <div class="box alternate">
+            <div class="box-title">
+              Summary
+            </div>
+            <div class="box-content ">
+        <div class="row-fluid quick-actions">
+            <div class="span3">
+                <a href="#" class="quick-action">
+                    <span class="icon wifi"></span>
+                    Total Pushes
+                            
+                    <strong>@Html.DisplayFor(m=>m.PushesSent)</strong>
+                </a>
+            </div>
+                        <div class="span3">
+                            <a href="#" class="quick-action">
+                                <span class="icon devices"></span>
+                                 Devices Registered:
+                           
+                              <strong>@Html.DisplayFor(m => m.RegisteredDevices)</strong>
+                            </a>
+                        </div>
+                        
+                        <div class="span3">
+                            <a href="#" class="quick-action">
+                                <span class="icon envelope"></span>
+                                Successful Push
+                           
+                            <strong>@Html.DisplayFor(m=>m.TotalOk)</strong>
+                             </a>
+                        </div>
+                        <div class="span3">
+                            <a href="#" class="quick-action">
+                                <span class="icon bin"></span>
+                                failed Push
+                            
+                            <strong>@Html.DisplayFor(m=>m.TotalFail)</strong>
+                            </a>
+                        </div>
+                       
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>

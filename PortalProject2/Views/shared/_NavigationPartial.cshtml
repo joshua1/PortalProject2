@@ -1,0 +1,46 @@
+﻿@if (Request.IsAuthenticated)
+{
+    <div class="leftmenu span3 ">
+
+        <ul class="nav">
+            <li class="active">
+          <a href="@Url.Action("Index","Home")">
+            <span class="ico"><i class="icon-home"></i></span><span class="text">Home</span>
+            <span class="text"></span><b class="caret"></b>
+          </a></li>
+            <li>
+                <a href="#">
+                    <span class="ico"><i class="icon-envelope"></i></span><span class="text">Messages</span>
+                    <span class="indicator"></span><b class="caret"></b>
+                </a>
+                <ul >
+                    <li>
+                        <a href="@Url.Action("Create", "Message") ">
+                            <span class="ico"><i class="icon-play"></i></span><span class="text">Send Message</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Message")">
+                            <span class="ico"><i class="icon-th"></i></span><span class="text">Sent Messages</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="ico"><i class="icon-hdd"></i></span><span class="text">Device</span>
+                    <span class="indicator"></span><b class="caret"></b>
+                </a>
+                <ul >
+                    <li>
+                        <a href="@Url.Action("Index","Device")">
+                            <span class="ico"><i class="icon-hdd"></i></span><span class="text">Lock Device</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+</div>
+}
