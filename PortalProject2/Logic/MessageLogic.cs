@@ -125,20 +125,22 @@ namespace PortalProject2.Logic
 
          internal static List<PhoneNumber> GetNumbers(long id)
          {
+             List<PhoneNumber> nList = new List<PhoneNumber>();
              var retList = new List<string>();
              var firstOrDefault = repo.Select<Message>().FirstOrDefault(k => k.Id == id);
              if (firstOrDefault != null)
              {
                  var numbs = firstOrDefault.PhoneNumber;
                  var numbers= JsonConvert.DeserializeObject<List<string>>(numbs);
-                 List<PhoneNumber> nList=new List<PhoneNumber>();
+               
                  foreach (var number in numbers)
                  {
                      PhoneNumber n = new PhoneNumber {Number = number};
                      nList.Add(n);
                  }
-                 return nList;
+                 
              }
+             return nList;
          }
 
          internal static PushStats GetPushStats()
