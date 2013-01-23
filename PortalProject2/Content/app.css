@@ -288,11 +288,11 @@ a.cancel:hover {
     margin-bottom: 0;
 }
 .box.login .box-content .control-label {
-    width: 70px;
+    width: 120px;
 }
-.box.login .box-content .controls {
+/*.box.login .box-content .controls {
     margin-left: 90px;
-}
+}*/
 .box.login .box-content .form-actions {
     margin: 0 -15px -15px;
     padding: 15px;
