@@ -17,14 +17,15 @@
 
                                   @using (Html.BeginForm())
                                   {
+                                      
                                          @Html.ValidationSummary(true)
                                         foreach (var property in Model.VisibleProperties())
                                         {
                                                 @Html.BeginControlGroupFor(property.Name)
-                                               @Html.Label(property.Name.ToLower(), new { @class = "control-label" })
+                                               @Html.Label(property.Name.ToSeparatedWords(), new { @class = "control-label" })
                                              <div class="controls">
                                                     @Html.Editor(property.Name)
-                                                   @* @Html.ValidationMessage(property.Name, null, new { @class = "help-inline" })*@
+                                                    @Html.ValidationMessage(property.Name, null, new { @class = "help-inline" })
 		                                     </div>
                                                     @Html.EndControlGroup()
                                         }
