@@ -22,8 +22,8 @@
                             @Html.BeginControlGroupFor(property.Name)
                             @Html.Label(property.Name.ToSeparatedWords(), new { @class = "control-label" })
                             <div class="controls">
-                                @Html.Editor(property.Name, new { @class = "input-xlarge" })
-                                @Html.ValidationMessage(property.Name, null, new { @class = "help-inline" })
+                                @Html.Editor(property.Name)
+                              @*  @Html.ValidationMessage(property.Name, null, new { @class = "help-inline" })*@
                             </div>
                             @Html.EndControlGroup()
                         }
