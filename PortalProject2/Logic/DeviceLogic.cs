@@ -94,11 +94,11 @@ namespace PortalProject2.Logic
                 phone = phone.Substring(2);
             if (phone.Substring(0, 3) == "234")
                 return 
-                           "['"+Md5.GetMd5Hash(phone)+"','"+ Md5.GetMd5Hash("0" + phone.Substring(3))+"','"+ phone.Substring(3)+"']";
+                           "[\""+Md5.GetMd5Hash(phone)+"\",\""+ Md5.GetMd5Hash("0" + phone.Substring(3))+"\",\""+ phone.Substring(3)+"\"]";
             else if(phone.Substring(0, 1) == "0")
-                return "['"+ Md5.GetMd5Hash("234"+phone.Substring(1))+"','"+ Md5.GetMd5Hash(phone)+"','"+phone.Substring(1)+"']";
+                return "[\""+ Md5.GetMd5Hash("234"+phone.Substring(1))+"\",\""+ Md5.GetMd5Hash(phone)+"\",\""+phone.Substring(1)+"\"]";
             else
-                return "['"+Md5.GetMd5Hash("234"+phone)+"','"+ Md5.GetMd5Hash("0" + phone)+"','"+phone+"']";
+                return "[\""+Md5.GetMd5Hash("234"+phone)+"\",\""+ Md5.GetMd5Hash("0" + phone)+"\",\""+phone+"\"]";
         }
     }
 }
