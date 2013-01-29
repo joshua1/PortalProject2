@@ -51,14 +51,23 @@ namespace PortalProject2.Logic
             
         }
 
-        internal static void UpdateDevice(NewDevice device)
+        internal static DeviceResponse  UpdateDevice(NewDevice device)
         {
             var dev = repo.Select<Device>().FirstOrDefault(k => k.DevicePhoneNumber == device.DevicePhoneNumber);
+            DeviceResponse dr=new DeviceResponse();
             if (dev != null)
             {
                 dev.DeviceToken = device.DeviceToken;
                 repo.Update(dev);
+                dr.Status = true;
+                dr.StatusMessage = "Updated";
             }
+            else
+            {
+                dr.Status = false;
+                dr.StatusMessage = "Device not found";
+            }
+            return dr;
         }
 
         internal static string SendLock(PhoneNumber phone)

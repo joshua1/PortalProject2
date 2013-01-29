@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Web;
@@ -61,9 +63,27 @@ namespace PortalProject2.Logic
             where TItem : class, new()
         {
             DbSet<TItem> set = GetDbSet(typeof(TItem)).GetValue(context, null) as DbSet<TItem>;
-            set.Add(item);
-            context.SaveChanges();
-            return item;
+            try
+            {
+                set.Add(item);
+                context.SaveChanges();
+                return item;
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Trace.TraceInformation("Class: {0}, Property: {1}, Error: {2}",
+                            validationErrors.Entry.Entity.GetType().FullName,
+                            validationError.PropertyName,
+                            validationError.ErrorMessage);
+                    }
+                }
+
+                throw;  // You can also choose to handle the exception here...
+            }
         }
 
         /// <summary>
