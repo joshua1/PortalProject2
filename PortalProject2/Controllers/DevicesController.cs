@@ -38,22 +38,17 @@ namespace PortalProject2.Controllers
         }
 
         // PUT api/Devices/5
-        public HttpResponseMessage PutDevice(long id, Device device)
+        [AcceptVerbs("PUT")]
+        public HttpResponseMessage PutDevice(NewDevice device)
         {
-            if (ModelState.IsValid && id == device.Id)
+            if (ModelState.IsValid)
             {
-                db.Entry(device).State = EntityState.Modified;
+                DeviceLogic.UpdateDevice(device);
 
-                try
-                {
-                    db.SaveChanges();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    return Request.CreateResponse(HttpStatusCode.NotFound);
-                }
-
-                return Request.CreateResponse(HttpStatusCode.OK);
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, new DeviceResponse { Status = true, StatusMessage = "Updated" });
+                response.Headers.Add("Access-Control-Allow-Origin", "*");
+                // response.Headers.Location = new Uri(Url.Link("DefaultApi", new DeviceResponse { Status = true, StatusMessage = "Updated" }));
+                return response;
             }
             else
             {
@@ -77,23 +72,23 @@ namespace PortalProject2.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
         }
-        [AcceptVerbs("POST","PUT")]
-        public HttpResponseMessage UpdatePhone(NewDevice device)
-        {
-            if (ModelState.IsValid)
-            {
-                DeviceLogic.UpdateDevice(device);
+        //[AcceptVerbs("POST","PUT")]
+        //public HttpResponseMessage UpdatePhone(NewDevice device)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        DeviceLogic.UpdateDevice(device);
 
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, new DeviceResponse { Status = true, StatusMessage = "Updated" });
-                response.Headers.Add("Access-Control-Allow-Origin", "*");
-               // response.Headers.Location = new Uri(Url.Link("DefaultApi", new DeviceResponse { Status = true, StatusMessage = "Updated" }));
-                return response;
-            }
-            else
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-        }
+        //        HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, new DeviceResponse { Status = true, StatusMessage = "Updated" });
+        //        response.Headers.Add("Access-Control-Allow-Origin", "*");
+        //       // response.Headers.Location = new Uri(Url.Link("DefaultApi", new DeviceResponse { Status = true, StatusMessage = "Updated" }));
+        //        return response;
+        //    }
+        //    else
+        //    {
+        //        return Request.CreateResponse(HttpStatusCode.BadRequest);
+        //    }
+        //}
 
 
 
