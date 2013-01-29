@@ -43,9 +43,9 @@ namespace PortalProject2.Controllers
         {
             if (ModelState.IsValid)
             {
-                DeviceLogic.UpdateDevice(device);
+               DeviceResponse dr= DeviceLogic.UpdateDevice(device);
 
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, new DeviceResponse { Status = true, StatusMessage = "Updated" });
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created,dr);
                 response.Headers.Add("Access-Control-Allow-Origin", "*");
                 // response.Headers.Location = new Uri(Url.Link("DefaultApi", new DeviceResponse { Status = true, StatusMessage = "Updated" }));
                 return response;
@@ -61,9 +61,9 @@ namespace PortalProject2.Controllers
         {
             if (ModelState.IsValid)
             {
-                DeviceLogic.SaveDevice(device);
+               DeviceResponse dr= DeviceLogic.SaveDevice(device);
 
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, new DeviceResponse { Status = true, StatusMessage = "Saved" });
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, dr);
                 //response.Headers.Location = new Uri(Url.Link("DefaultApi", new DeviceResponse { Status=true,StatusMessage = "Saved"}));
                 return response;
             }
