@@ -72,23 +72,7 @@ namespace PortalProject2.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
         }
-        //[AcceptVerbs("POST","PUT")]
-        //public HttpResponseMessage UpdatePhone(NewDevice device)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        DeviceLogic.UpdateDevice(device);
-
-        //        HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, new DeviceResponse { Status = true, StatusMessage = "Updated" });
-        //        response.Headers.Add("Access-Control-Allow-Origin", "*");
-        //       // response.Headers.Location = new Uri(Url.Link("DefaultApi", new DeviceResponse { Status = true, StatusMessage = "Updated" }));
-        //        return response;
-        //    }
-        //    else
-        //    {
-        //        return Request.CreateResponse(HttpStatusCode.BadRequest);
-        //    }
-        //}
+        
 
 
 
