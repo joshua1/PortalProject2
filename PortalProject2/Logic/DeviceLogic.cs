@@ -18,17 +18,20 @@ namespace PortalProject2.Logic
         internal static DeviceResponse SaveDevice(NewDevice device)
         {
             DeviceResponse dr=new DeviceResponse();
-            var Count = repo.Select<Device>().Count(k => k.DevicePhoneNumber == device.DevicePhoneNumber);
-            if(Count>0)
+            var dev = repo.Select<Device>().Where(k => k.DevicePhoneNumber == device.DevicePhoneNumber);
+            var count = dev.Count();
+            if(count>0)
             {
                 dr.Status = false;
                 dr.StatusMessage = "Phone number already exist";
+                dr.Device = dev.FirstOrDefault();
             }
             else
             {
                 repo.Insert(new Device {DevicePhoneNumber = device.DevicePhoneNumber, DeviceToken = device.DeviceToken});
                 dr.Status = true;
                 dr.StatusMessage = "Saved";
+                dr.Device = dev.FirstOrDefault();
             }
             return dr;
         }
@@ -61,11 +64,13 @@ namespace PortalProject2.Logic
                 repo.Update(dev);
                 dr.Status = true;
                 dr.StatusMessage = "Updated";
+                dr.Device = dev;
             }
             else
             {
                 dr.Status = false;
                 dr.StatusMessage = "Device not found";
+                dr.Device=new Device();
             }
             return dr;
         }

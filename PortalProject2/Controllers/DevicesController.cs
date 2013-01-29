@@ -98,8 +98,9 @@ namespace PortalProject2.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK, device);
         }
-        [AcceptVerbs("DELETE")]
-        public HttpResponseMessage DeletePhone(string phoneNo)
+        [HttpDelete]
+        [ActionName("DeletePhone")]
+        public HttpResponseMessage DeleteDeviceByName(string phoneNo)
         {
             if (DeviceLogic.DeleteDevice(phoneNo))
             {

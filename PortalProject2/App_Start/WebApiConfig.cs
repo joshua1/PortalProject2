@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Formatting;
 using System.Web.Http;
 
 namespace PortalProject2
@@ -37,7 +38,9 @@ namespace PortalProject2
 
             var appXmlType = config.Formatters.XmlFormatter.SupportedMediaTypes.FirstOrDefault(t => t.MediaType == "application/xml");
             config.Formatters.XmlFormatter.SupportedMediaTypes.Remove(appXmlType);
- 
+            config.Formatters.Add(new JsonMediaTypeFormatter());
+            config.Formatters.Remove(new XmlMediaTypeFormatter());
+
         }
     }
 }

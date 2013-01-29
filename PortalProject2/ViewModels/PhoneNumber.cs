@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using PortalProject2.Models;
 
 namespace PortalProject2.ViewModels
 {
@@ -16,6 +17,7 @@ namespace PortalProject2.ViewModels
     {
         public bool Status { get; set; }
         public string StatusMessage { get; set; }
+        public Device Device { get; set; }
     }
 
     public class PushStats
