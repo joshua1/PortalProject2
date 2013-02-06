@@ -114,5 +114,17 @@ namespace PortalProject2.Logic
             else
                 return "[\""+Md5.GetMd5Hash("234"+phone)+"\",\""+ Md5.GetMd5Hash("0" + phone)+"\",\""+phone+"\"]";
         }
+        internal static IEnumerable<Device> GetAllDevices()
+        {
+
+
+            return repo.Select<Device>().AsEnumerable();
+        }
+
+        internal static Device GetDevice(long id)
+        {
+
+            return repo.Select<Device>().FirstOrDefault(k => k.Id == id);
+        }
     }
 }

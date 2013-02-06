@@ -19,11 +19,23 @@ namespace PortalProject2.Models.Mapping
                 .IsRequired()
                 .HasMaxLength(100);
 
+            this.Property(t => t.DeviceModel)
+                .HasMaxLength(50);
+
+            this.Property(t => t.DeviceVersion)
+                .HasMaxLength(50);
+
+            this.Property(t => t.DevicePlatform)
+                .HasMaxLength(50);
+
             // Table & Column Mappings
             this.ToTable("Device");
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.DeviceToken).HasColumnName("DeviceToken");
             this.Property(t => t.DevicePhoneNumber).HasColumnName("DevicePhoneNumber");
+            this.Property(t => t.DeviceModel).HasColumnName("DeviceModel");
+            this.Property(t => t.DeviceVersion).HasColumnName("DeviceVersion");
+            this.Property(t => t.DevicePlatform).HasColumnName("DevicePlatform");
         }
     }
 }

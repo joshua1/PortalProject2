@@ -28,6 +28,7 @@ namespace PortalProject2.Models
         public DbSet<aspnet_WebEvent_Events> aspnet_WebEvent_Events { get; set; }
         public DbSet<Device> Devices { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<MessageNumber> MessageNumbers { get; set; }
         public DbSet<UserAuth> UserAuths { get; set; }
         public DbSet<UserOAuthProvider> UserOAuthProviders { get; set; }
         public DbSet<vw_aspnet_Applications> vw_aspnet_Applications { get; set; }
@@ -54,6 +55,7 @@ namespace PortalProject2.Models
             modelBuilder.Configurations.Add(new aspnet_WebEvent_EventsMap());
             modelBuilder.Configurations.Add(new DeviceMap());
             modelBuilder.Configurations.Add(new MessageMap());
+            modelBuilder.Configurations.Add(new MessageNumberMap());
             modelBuilder.Configurations.Add(new UserAuthMap());
             modelBuilder.Configurations.Add(new UserOAuthProviderMap());
             modelBuilder.Configurations.Add(new vw_aspnet_ApplicationsMap());

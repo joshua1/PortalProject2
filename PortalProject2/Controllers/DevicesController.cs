@@ -22,13 +22,13 @@ namespace PortalProject2.Controllers
         // GET api/Devices
         public IEnumerable<Device> GetDevices()
         {
-            return db.Devices.AsEnumerable();
+            return DeviceLogic.GetAllDevices();
         }
 
-        // GET api/Devices/5
+        //// GET api/Devices/5
         public Device GetDevice(long id)
         {
-            Device device = db.Devices.Find(id);
+            Device device = DeviceLogic.GetDevice(id);
             if (device == null)
             {
                 throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
@@ -36,7 +36,6 @@ namespace PortalProject2.Controllers
 
             return device;
         }
-
         // PUT api/Devices/5
         [AcceptVerbs("PUT")]
         public HttpResponseMessage PutDevice(NewDevice device)
