@@ -19,9 +19,6 @@ namespace PortalProject2.Models.Mapping
                 .IsRequired()
                 .HasMaxLength(50);
 
-            this.Property(t => t.PhoneNumber)
-                .HasMaxLength(50);
-
             this.Property(t => t.MessageText)
                 .IsRequired()
                 .HasMaxLength(50);

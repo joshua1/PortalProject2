@@ -19,8 +19,8 @@ namespace PortalProject2.Logic
         {
             DeviceResponse dr=new DeviceResponse();
             var dev = repo.Select<Device>().Where(k => k.DevicePhoneNumber == device.DevicePhoneNumber);
-            var count = dev.Count();
-            if(count>0)
+            var count = dev.Any();
+            if(count)
             {
                 dr.Status = false;
                 dr.StatusMessage = "Phone number already exist";
@@ -39,9 +39,9 @@ namespace PortalProject2.Logic
         internal static bool DeleteDevice(string phoneNo)
         {
             var dev = repo.Select<Device>().Where(k => k.DevicePhoneNumber == phoneNo);
-            var count = dev.Count();
+            var count = dev.Any();
             var item = dev.FirstOrDefault();
-            if(count>0)
+            if(count)
             {
                 repo2.Delete(item);
                 return true; 

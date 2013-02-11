@@ -46,7 +46,7 @@ namespace PortalProject2.Logic
                  string[] phoneNo = msg.PhoneNumbers.Split(',');
                  foreach (string item in phoneNo)
                  {
-                     string item1 = item;
+                     string item1 = Md5.GetMd5Hash(item);
                      var firstOrDefault = repo.Select<Device>().FirstOrDefault(q => q.DevicePhoneNumber == item1);
                      if (firstOrDefault != null)
                      {
@@ -54,7 +54,7 @@ namespace PortalProject2.Logic
 
                          string token = firstOrDefault.DeviceToken;
                          deviceTokens.Add(token);
-                         phoneList.Add(item1);
+                         phoneList.Add(item);
                      }
                  }
              }
@@ -149,7 +149,7 @@ namespace PortalProject2.Logic
              int statusOk=0;
              int statusFail=0;
              var messages = repo.Select<Message>();
-             var messageCount = messages.Count();
+             //var messageCount = messages.Count();
              int devicesCount = 0;
              int devicesRegistered = repo2.Select<Device>().Count();
              

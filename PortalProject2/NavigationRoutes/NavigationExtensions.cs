@@ -41,7 +41,7 @@ namespace NavigationRoutes
         public static IEnumerable<NamedRoute> GetRoutesForCurrentRequest(RouteCollection routes,IEnumerable<INavigationRouteFilter> routeFilters)
         {
             var navigationRoutes = routes.OfType<NamedRoute>().Where(r=>r.IsChild==false).ToList();
-            if (routeFilters.Count() > 0)
+            if (routeFilters.Any())
             {
                 foreach (var route in navigationRoutes.ToArray())
                 {
@@ -69,7 +69,7 @@ namespace NavigationRoutes
             {
                 li.AddCssClass("active");
             }
-            if (route.Children.Count() > 0)
+            if (route.Children.Any())
             {
                 //TODO: create a UL of child routes here.
                 li.AddCssClass("dropdown");
